@@ -1,3 +1,3 @@
-# Troia
+# Troja
 
-Projekt für #cdvbw22 mit dem Troia Datensatz des MUT
+Projekt für #cdvbw22 mit dem Troja Datensatz des MUT
