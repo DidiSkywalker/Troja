@@ -12,14 +12,15 @@ public class Building : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (MinigameState.IsMinigameRunning())
         {
-            print("Building clicked!");
-            if (launchMinigameEventChannelSo != null)
-            {
-                print($"Building attempts to launch Minigame {minigame.minigameName}");
-                launchMinigameEventChannelSo.RaiseEvent(minigame);
-            }
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0) && launchMinigameEventChannelSo != null)
+        {
+            print($"Building attempts to launch Minigame {minigame.minigameName}");
+            launchMinigameEventChannelSo.RaiseEvent(minigame);
         }
     }
 }

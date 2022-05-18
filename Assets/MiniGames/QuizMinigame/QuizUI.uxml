@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/MiniGames/QuizMinigame/QuizUIStyles.uss?fileID=7433441132597879392&amp;guid=65538eb2c457e9d40b16bdb51de395b4&amp;type=3#QuizUIStyles" />
+    <ui:VisualElement style="justify-content: center; align-items: center; flex-grow: 1; max-width: 80%; margin-left: auto; margin-right: auto;">
+        <ui:Label text="Title" display-tooltip-when-elided="true" name="title" style="font-size: 24px; margin-bottom: 20px;" />
+        <ui:Label text="Question" display-tooltip-when-elided="true" name="question" style="font-size: 18px;" />
+        <ui:VisualElement name="answers" style="align-items: flex-start; margin-top: 20px; flex-grow: 0; width: 100%;" />
+        <ui:Button text="Continue" display-tooltip-when-elided="true" name="next" class="next-button" />
+    </ui:VisualElement>
+</ui:UXML>

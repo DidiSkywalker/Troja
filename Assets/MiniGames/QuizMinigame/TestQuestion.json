@@ -1,0 +1,21 @@
+﻿{
+  "questions": [
+    {
+      "text": "This is a separate Question.",
+      "answers": [
+        {
+          "text": "It has",
+          "isCorrect": true
+        },
+        {
+          "text": "two correct",
+          "isCorrect": false
+        },
+        {
+          "text": "answers",
+          "isCorrect": true
+        }
+      ]
+    }
+  ]
+}

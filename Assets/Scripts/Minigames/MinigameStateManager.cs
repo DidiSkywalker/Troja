@@ -9,16 +9,15 @@ namespace Minigames
     /// </summary>
     public class MinigameStateManager : MonoBehaviour
     {
-        public MinigameStateSO minigameState;
 
         public void SetActiveMinigame(MinigameSO minigame)
         {
-            minigameState.activeMinigame = minigame;
+            MinigameState.Instance.ActiveMinigame = minigame;
         }
 
         public void UnsetActiveMinigame()
         {
-            minigameState.activeMinigame = null;
+            MinigameState.Instance.ActiveMinigame = null;
         }
     }
 }

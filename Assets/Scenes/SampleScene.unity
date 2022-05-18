@@ -1027,5 +1027,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c032dccb8ae74f41b00d7e023cb93da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 11400000, guid: df7acc36f7d960e42a8332ef0250a831, type: 2}
+  minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}

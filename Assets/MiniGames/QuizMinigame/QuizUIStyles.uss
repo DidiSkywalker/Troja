@@ -1,0 +1,41 @@
+VisualElement {
+    color: white;
+}
+
+#question {
+    font-size: 18px;
+}
+
+.answer {
+    font-size: 14px;
+    border-radius: 10px;
+    border-width: 2px;
+    width: 100%;
+    padding: 5px 15px;
+    margin-top: 5px;
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+.answer:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.solution > .correct {
+    background-color: green;
+}
+
+.clicked {
+    border-color: orange;
+}
+
+.next-button {
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 15px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.next-button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}

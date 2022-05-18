@@ -7,14 +7,13 @@ namespace Minigames
     /// <summary>
     /// This class handles loading and unloading of Minigame scenes as they're launched, aborted or successfully
     /// completed.
-    /// The MinigameSceneLoader relies on up-to-date state in the given MinigameStateSO and itself raises an event
-    /// in the MinigameSceneUnloadedEventChannel, to allow the MinigameStateSO to clean up its currently active
+    /// The MinigameSceneLoader relies on up-to-date state in MinigameState and itself raises an event
+    /// in the MinigameSceneUnloadedEventChannel, to allow the MinigameStateManager to clean up its currently active
     /// minigame after the scene unloaded.
     /// </summary>
     public class MinigameSceneLoader : MonoBehaviour
     {
 
-        public MinigameStateSO minigameState;
         public VoidEventChannelSO minigameSceneUnloadedEventChannel;
 
         /// <summary>
@@ -28,13 +27,13 @@ namespace Minigames
         
         /// <summary>
         /// Unload the currently active minigame.
-        /// The currently active minigame is whatever is stored in the given MinigameStateSO.
+        /// The currently active minigame is whatever is stored in MinigameState.
         /// 
         /// Raises an event in the MinigameSceneUnloadedEventChannel.
         /// </summary>
         public void UnloadMinigameScene()
         {
-            SceneManager.UnloadSceneAsync(minigameState.activeMinigame.minigameScene.ScenePath);
+            SceneManager.UnloadSceneAsync(MinigameState.Instance.ActiveMinigame.minigameScene.ScenePath);
             minigameSceneUnloadedEventChannel.RaiseEvent();
         }
     }

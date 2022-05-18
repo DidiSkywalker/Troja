@@ -1,0 +1,38 @@
+﻿{
+  "questions": [
+    {
+      "text": "This is a test question.\nThis is the second line.\nWhat's it gonna be?",
+      "answers": [
+        {
+          "text": "Answer A",
+          "isCorrect": false
+        },
+        {
+          "text": "Answer B",
+          "isCorrect": true
+        },
+        {
+          "text": "Answer C",
+          "isCorrect": false
+        },
+        {
+          "text": "Answer D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "This is the second question.\nAre you ready?",
+      "answers": [
+        {
+          "text": "Yes",
+          "isCorrect": false
+        },
+        {
+          "text": "No",
+          "isCorrect": true
+        }
+      ]
+    }
+  ]
+}
