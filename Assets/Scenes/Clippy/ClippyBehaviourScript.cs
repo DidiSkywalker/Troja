@@ -1,18 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ClippyBehaviourScript : MonoBehaviour
 {
+    enum AnimatedMovements
+    {
+        SLIDEIN, SLIDEOUT, SLIDEUP, SLIDEDOWN, SPEECHBUBBLESCALEUP, SPEECHBUBBLESCALEDOWN
+    }
+
     enum AnimatedMoves
     {
         SLIDEIN, SLIDEOUT, SLIDEUP, SLIDEDOWN
     }
 
+    public GameObject speechBubble;
+    public GameObject textField;
     public Sprite m_Sprite;
     private Image m_Image;
     private RectTransform m_RectTransform;
     private Animator anim;
+    private RectTransform bubbleRectTransform;
+    private RectTransform textRectTransform;
+    private TextMeshProUGUI textComponent;
+    public string text1;
+    public string text2;
 
+    public Vector2 textPadding = new Vector2(60, 30);
+    public Vector2 speechBubbleScaleFactor = new Vector2(1, 1);
+    public Vector2 speechBubbleScale = new Vector2(900, 450);
     public Vector2 positionOffset = new Vector2(0, 0);
     private Vector2 position = new Vector2(0, 0);
     private Vector2 clippySize;
@@ -28,35 +44,76 @@ public class ClippyBehaviourScript : MonoBehaviour
         
         m_RectTransform = GetComponent<RectTransform>();
 
+        bubbleRectTransform = speechBubble.GetComponent<RectTransform>();
+        textRectTransform = textField.GetComponent<RectTransform>();
+        textComponent = textField.GetComponent<TextMeshProUGUI>();
+
+        textRectTransform.anchoredPosition = new Vector3(textPadding.x, -textPadding.y, 0);
+
         recalcClippySize();
         moveClippyRelative(position);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) moveClippyAnimated(AnimatedMoves.SLIDEIN);
-        if (Input.GetKeyDown(KeyCode.D)) moveClippyAnimated(AnimatedMoves.SLIDEOUT);
-        if (Input.GetKeyDown(KeyCode.W)) moveClippyAnimated(AnimatedMoves.SLIDEUP);
-        if (Input.GetKeyDown(KeyCode.S)) moveClippyAnimated(AnimatedMoves.SLIDEDOWN);
+        if (Input.GetKeyDown(KeyCode.A)) moveClippyAnimated(AnimatedMovements.SLIDEIN);
+        if (Input.GetKeyDown(KeyCode.D)) moveClippyAnimated(AnimatedMovements.SLIDEOUT);
+        if (Input.GetKeyDown(KeyCode.W)) moveClippyAnimated(AnimatedMovements.SLIDEUP);
+        if (Input.GetKeyDown(KeyCode.S)) moveClippyAnimated(AnimatedMovements.SLIDEDOWN);
+
+        if (Input.GetKeyDown(KeyCode.O)) moveClippyAnimated(AnimatedMovements.SPEECHBUBBLESCALEUP);
+        if (Input.GetKeyDown(KeyCode.P)) moveClippyAnimated(AnimatedMovements.SPEECHBUBBLESCALEDOWN);
+
+        if (Input.GetKeyDown(KeyCode.F)) clippySingleSay(text1);
+        if (Input.GetKeyDown(KeyCode.G)) clippySingleSay(text2);
+
+        if (Input.GetKeyDown(KeyCode.T)) speechBubble.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Z)) speechBubble.SetActive(true);
+
+        bubbleRectTransform.sizeDelta = new Vector3(speechBubbleScale.x * speechBubbleScaleFactor.x, speechBubbleScale.y * speechBubbleScaleFactor.y, 1);
+        
 
         moveClippyRelative(percentagePosition);
     }
 
-    private void moveClippyAnimated(AnimatedMoves move)
+    public void clippySingleSay(string says)
+    {
+        float preferredHeight;
+        float lowestWidth = speechBubbleScale.x - 2 * textPadding.x;
+        textComponent.text = says;
+        /*
+        if ((speechBubbleScale.x - 2 * textPadding.x) < textComponent.preferredWidth)
+        {
+            lowestWidth = textComponent.preferredWidth;
+        }
+        */
+        textRectTransform.sizeDelta = new Vector3(lowestWidth, 0, 1);
+        preferredHeight = textComponent.preferredHeight;
+        speechBubbleScale.y = preferredHeight + 2 * textPadding.y;
+        moveClippyAnimated(AnimatedMovements.SPEECHBUBBLESCALEUP);
+    }
+
+    private void moveClippyAnimated(AnimatedMovements move)
     {
         switch (move)
         {
-            case AnimatedMoves.SLIDEIN:
+            case AnimatedMovements.SLIDEIN:
                 anim.SetTrigger("TriggerSlideIn");
                 break;
-            case AnimatedMoves.SLIDEOUT:
+            case AnimatedMovements.SLIDEOUT:
                 anim.SetTrigger("TriggerSlideOut");
                 break;
-            case AnimatedMoves.SLIDEUP:
+            case AnimatedMovements.SLIDEUP:
                 anim.SetTrigger("TriggerSlideUp");
                 break;
-            case AnimatedMoves.SLIDEDOWN:
+            case AnimatedMovements.SLIDEDOWN:
                 anim.SetTrigger("TriggerSlideDown");
+                break;
+            case AnimatedMovements.SPEECHBUBBLESCALEUP:
+                anim.SetTrigger("SpeechBubbleScaleUp");
+                break;
+            case AnimatedMovements.SPEECHBUBBLESCALEDOWN:
+                anim.SetTrigger("SpeechBubbleScaleDown");
                 break;
             default:
                 break;
@@ -72,7 +129,7 @@ public class ClippyBehaviourScript : MonoBehaviour
 
     private void moveClippyRelative(Vector2 relativePosition)
     {
-        Vector3 absolutePosition = new Vector3(clippySize.x * (0.5f - relativePosition.x) + positionOffset.x, -clippySize.y * (0.5f - relativePosition.y) + positionOffset.y, 0f);
+        Vector3 absolutePosition = new Vector3(clippySize.x * (1 - relativePosition.x) + positionOffset.x, -clippySize.y * (1 - relativePosition.y) + positionOffset.y, 0f);
         m_RectTransform.anchoredPosition = absolutePosition;
     }
 
