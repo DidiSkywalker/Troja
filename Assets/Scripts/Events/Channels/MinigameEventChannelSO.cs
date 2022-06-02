@@ -11,15 +11,26 @@ namespace Events.Channels
     [CreateAssetMenu(menuName = "Events/Minigame Event Channel")]
     public class MinigameEventChannelSO : ScriptableObject
     {
+        
         public UnityAction<MinigameSO> OnEventRaised;
 
         /// <summary>
+        /// 
         /// Raise an event in this channel.
         /// Any MinigameEventListeners listening to this channel will be notified.
         /// </summary>
         public void RaiseEvent(MinigameSO minigame)
         {
             OnEventRaised?.Invoke(minigame);
+        }
+
+        public void RaiseEvent(MinigameSO minigame, object minigameParams)
+        {
+            if (OnEventRaised != null)
+            {
+                OnEventRaised.Invoke(minigame);
+                MinigameState.Instance.MinigameParams = minigameParams;
+            }
         }
     }
 }

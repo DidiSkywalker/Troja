@@ -1,5 +1,7 @@
+using System;
 using Events.Channels;
 using Minigames;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -9,6 +11,7 @@ public class Building : MonoBehaviour
 {
     public MinigameSO minigame;
     public MinigameEventChannelSO launchMinigameEventChannelSo;
+    public Texture2D pointerCursor;
 
     private void OnMouseOver()
     {
@@ -22,5 +25,15 @@ public class Building : MonoBehaviour
             print($"Building attempts to launch Minigame {minigame.minigameName}");
             launchMinigameEventChannelSo.RaiseEvent(minigame);
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        // Cursor.SetCursor(pointerCursor, Vector2.zero, CursorMode.Auto);
+    }
+
+    private void OnMouseExit()
+    {
+        // Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }

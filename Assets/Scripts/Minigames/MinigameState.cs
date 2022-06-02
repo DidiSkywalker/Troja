@@ -10,6 +10,7 @@
         }
 
         public MinigameSO ActiveMinigame;
+        public object MinigameParams;
         private MinigameState() {}
     }
 }

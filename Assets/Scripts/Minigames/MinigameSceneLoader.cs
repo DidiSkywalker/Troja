@@ -22,9 +22,10 @@ namespace Minigames
         /// <param name="minigame">The minigame to load</param>
         public void LoadMinigameScene(MinigameSO minigame)
         {
+            CityScreenshotHelper.SaveTexture();
             SceneManager.LoadSceneAsync(minigame.minigameScene.ScenePath, LoadSceneMode.Additive);
         }
-        
+
         /// <summary>
         /// Unload the currently active minigame.
         /// The currently active minigame is whatever is stored in MinigameState.
