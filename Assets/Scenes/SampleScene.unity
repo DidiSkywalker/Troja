@@ -365,6 +365,10 @@ PrefabInstance:
         kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
       objectReference: {fileID: 0}
     - target: {fileID: 3383264193067000531, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383264193067000531, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
       propertyPath: textField
       value: 
       objectReference: {fileID: 29480192}
@@ -385,12 +389,24 @@ PrefabInstance:
       value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 3383264193067000531, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
+      propertyPath: clippyActionInstance
+      value: 
+      objectReference: {fileID: 11400000, guid: 97cf3f321292ad941b20f57872451861, type: 2}
+    - target: {fileID: 3383264193067000531, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
+      propertyPath: ClippySayEventChannelSo
+      value: 
+      objectReference: {fileID: 11400000, guid: f55c5a141896b3540884ae48004c983f, type: 2}
+    - target: {fileID: 3383264193067000531, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
       propertyPath: speechBubbleScaleFactor.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3383264193067000531, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
       propertyPath: speechBubbleScaleFactor.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642396269569362244, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6418399612812364452, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
       propertyPath: m_Name
