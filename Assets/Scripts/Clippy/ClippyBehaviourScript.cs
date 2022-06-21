@@ -1,23 +1,14 @@
 using ClippyAction;
 using Events.Channels;
+using Enums;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class ClippyBehaviourScript : MonoBehaviour
 {
-    enum AnimatedMovements
-    {
-        SLIDEIN, SLIDEOUT, SLIDEUP, SLIDEDOWN, SPEECHBUBBLESCALEUP, SPEECHBUBBLESCALEDOWN
-    }
-
-    enum AnimatedMoves
-    {
-        SLIDEIN, SLIDEOUT, SLIDEUP, SLIDEDOWN
-    }
-
-    public ClippyActionSO clippyActionInstance;
     public StringEventChannelSO ClippySayEventChannelSo;
+    public MovementEventChannelSO ClippyMoveEventChannelSo;
 
     public GameObject speechBubble;
     public GameObject textField;
@@ -87,7 +78,6 @@ public class ClippyBehaviourScript : MonoBehaviour
 
     public void clippySingleSay(string says)
     {
-        moveClippyAnimated(AnimatedMovements.SPEECHBUBBLESCALEUP);
         float preferredHeight;
         float lowestWidth = speechBubbleScale.x - 2 * textPadding.x;
         textComponent.text = says;
@@ -100,9 +90,10 @@ public class ClippyBehaviourScript : MonoBehaviour
         textRectTransform.sizeDelta = new Vector3(lowestWidth, 0, 1);
         preferredHeight = textComponent.preferredHeight;
         speechBubbleScale.y = preferredHeight + 2 * textPadding.y;
+        moveClippyAnimated(AnimatedMovements.SPEECHBUBBLESCALEUP);
     }
 
-    private void moveClippyAnimated(AnimatedMovements move)
+    public void moveClippyAnimated(AnimatedMovements move)
     {
         switch (move)
         {
