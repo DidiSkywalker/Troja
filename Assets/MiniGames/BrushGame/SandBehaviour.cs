@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class SandBehaviour : MonoBehaviour
 {
+    public GameObject sandPlane;
     public float width, height, brushSize, brushStrength;
     public int resolution;
 
     private Vector3[] newVertices;
     private Vector2[] newUV;
     private int[] newTriangles;
-    private Vector3 mousePos;
     private Transform transform;
     private int vertexCount;
     private int triangleCount;
 
     void Start()
     {
-        mousePos = new Vector3();
         vertexCount = (resolution + 1) * (resolution + 1);
         triangleCount = resolution * resolution * 2;
 
-        print(vertexCount);
-        print(triangleCount);
-        print(triangleCount * 3);
+        print("vertex count: " + vertexCount);
+        print("triangle count: " + triangleCount);
+        print("triange vertex count: " + triangleCount * 3);
 
         newVertices = new Vector3[vertexCount];
 
@@ -44,7 +43,7 @@ public class SandBehaviour : MonoBehaviour
             {
                 baseVertexIndex = i * (resolution + 1) + j;
                 
-                print(baseTriIndex);
+                //print(baseTriIndex);
                 newTriangles[baseTriIndex] = baseVertexIndex + resolution + 2;
                 newTriangles[baseTriIndex + 1] = baseVertexIndex + 1;
                 newTriangles[baseTriIndex + 2] = baseVertexIndex;
@@ -62,9 +61,9 @@ public class SandBehaviour : MonoBehaviour
         mesh.vertices = newVertices;
         //mesh.uv = newUV;
         mesh.triangles = newTriangles;
-        GetComponent<MeshFilter>().mesh = mesh;
-        GetComponent<MeshCollider>().sharedMesh = mesh;
-        transform = GetComponent<Transform>();
+        sandPlane.GetComponent<MeshFilter>().mesh = mesh;
+        sandPlane.GetComponent<MeshCollider>().sharedMesh = mesh;
+        transform = sandPlane.GetComponent<Transform>();
 
         transform.Translate(new Vector3(width / -2, height / -2, 0));
     }
@@ -73,9 +72,6 @@ public class SandBehaviour : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            mousePos = Input.mousePosition;
-            print(mousePos);
-
             RaycastHit hit;
             Vector3 interceptionPoint;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -87,7 +83,7 @@ public class SandBehaviour : MonoBehaviour
                 for (int i = 0; i < vertexCount; i++)
                 {
                     distance = Vector3.Distance(interceptionPoint, newVertices[i] + transform.localPosition);
-                    print("distance from vertex " + i + " is " + distance);
+                    //print("distance from vertex " + i + " is " + distance);
                     if (distance < brushSize) newVertices[i].z -= brushStrength;
                 }
 
@@ -96,8 +92,9 @@ public class SandBehaviour : MonoBehaviour
                 mesh.vertices = newVertices;
                 //mesh.uv = newUV;
                 mesh.triangles = newTriangles;
-                GetComponent<MeshFilter>().mesh = mesh;
-                GetComponent<MeshCollider>().sharedMesh = mesh;
+                sandPlane.GetComponent<MeshFilter>().mesh = mesh;
+                sandPlane.GetComponent<MeshCollider>().sharedMesh = mesh;
+                GetComponent<FragmentPlacement>().updateFragmentDiscovery();
             }
         }
     }
