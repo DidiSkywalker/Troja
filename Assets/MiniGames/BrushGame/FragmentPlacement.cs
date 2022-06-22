@@ -1,58 +1,73 @@
 using System.Collections;
+using Events.Channels;
+using Minigames;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FragmentPlacement : MonoBehaviour
 {
-    public Vector3 posOffset;
+	public MinigameEventChannelSO successEventChannel;
+	public MinigameSO minigameSO;
+	
+	public Vector3 posOffset;
 	public float sandPlaneColliderOffset;
 	public GameObject parentObject;
 	public GameObject sandPlane;
-    public GameObject[] fragments;
-    public GameObject[] rubble;
-    public bool currentIsCorrectPosRot;
-    public Vector3[] correctPos;
+	public GameObject solutionPositionGuide;
+	public GameObject[] fragments;
+	public GameObject[] rubble;
+	public bool currentIsCorrectPosRot;
+	public Vector3[] correctPos;
 	public Vector3[] correctRot;
-
-	public float[] fragmentVolumes;
 
 	public int poissonSamples = 30;
 	public float poissonRadius, poissonRadiusDecrement, poissonWidth, poissonHeight;
 
 	private bool[] startOffIntersect;
+	private bool[] isCompleted;
 
 	private float scale;
 	private MeshCollider[] fragmentColliders;
 	private MeshCollider sandPlaneCollider;
 
+	private Vector3 solutionPos;
+	private Vector3 solutionRot;
+	private float solutionScale;
+
 	void Start()
-    {
-		Transform emptyTransform = GetComponent<Transform>();
+	{
+		Transform solutionTransform = solutionPositionGuide.GetComponent<Transform>();
+		solutionPos = solutionTransform.localPosition;
+		solutionRot = solutionTransform.localEulerAngles;
+		solutionScale = solutionTransform.localScale.x * 100;
+
+
+		Transform emptyTransform = parentObject.GetComponent<Transform>();
 		scale = emptyTransform.localScale.x;
 
 		startOffIntersect = new bool[fragments.Length];
+		isCompleted = new bool[fragments.Length];
 
 		for (int i = 0; i < fragments.Length; i++)
-        {
+		{
 			startOffIntersect[i] = false;
-
+			isCompleted[i] = false;
 		}
 
-        if (currentIsCorrectPosRot)
-        {
-            correctPos = new Vector3[fragments.Length];
+		if (currentIsCorrectPosRot)
+		{
+			correctPos = new Vector3[fragments.Length];
 			correctRot = new Vector3[fragments.Length];
-			fragmentVolumes = new float[fragments.Length];
 			Transform fragmentTransform;
 			//MeshFilter fragmentMesh;
-            for (int i = 0; i < fragments.Length; i++)
-            {
-                fragmentTransform = fragments[i].GetComponent<Transform>();
+			for (int i = 0; i < fragments.Length; i++)
+			{
+				fragmentTransform = fragments[i].GetComponent<Transform>();
 				//fragmentMesh = fragments[i].GetComponent<MeshFilter>();
 				correctPos[i] = fragmentTransform.localPosition;
 				correctRot[i] = fragmentTransform.localEulerAngles;
 				//fragmentVolumes[i] = VolumeOfMesh(fragmentMesh.mesh);
-            }
+			}
 		}
 
 		fragmentColliders = new MeshCollider[fragments.Length];
@@ -63,31 +78,33 @@ public class FragmentPlacement : MonoBehaviour
 
 		sandPlaneCollider = sandPlane.GetComponent<MeshCollider>();
 
-			List<Vector2> poissonPoints;
-        do
-        {
+		List<Vector2> poissonPoints;
+		do
+		{
 			poissonPoints = GeneratePoints(poissonRadius, new Vector2((poissonWidth / scale), (poissonHeight / scale)), poissonSamples);
 			print("generated " + poissonPoints.Count + " points with radius " + poissonRadius);
 			poissonRadius -= poissonRadiusDecrement;
-        } while (poissonPoints.Count < fragments.Length);
+		} while (poissonPoints.Count < fragments.Length);
 
+		print("scale is " + scale);
 
 		for (int i = 0; i < fragments.Length; i++)
 		{
 			Transform fragmentTransform = fragments[i].GetComponent<Transform>();
-			fragmentTransform.localPosition = new Vector3(poissonPoints[i].x + posOffset.x - (poissonWidth / (scale * 2)), poissonPoints[i].y + posOffset.y - (poissonHeight / (scale * 2)), posOffset.z);
+			fragmentTransform.localPosition = new Vector3(poissonPoints[i].x + posOffset.x - (poissonWidth / (scale * 2)), poissonPoints[i].y + posOffset.y - (poissonHeight / (scale * 2)), posOffset.z / scale);
 			fragmentTransform.localEulerAngles = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
-        }
-    }
+		}
+	}
 
 	public void updateFragmentDiscovery()
-    {
+	{
 		Vector3 direction;
 		float distance;
 		bool intersected;
 
-        for (int i = 0; i < fragments.Length; i++)
-        {
+		bool allCompleted = true;
+		for (int i = 0; i < fragments.Length; i++)
+		{
 			intersected = Physics.ComputePenetration(
 						fragmentColliders[i],
 						fragmentColliders[i].gameObject.transform.position,
@@ -99,19 +116,25 @@ public class FragmentPlacement : MonoBehaviour
 						out distance);
 
 			if (intersected && !startOffIntersect[i])
-            {
+			{
 				startOffIntersect[i] = true;
 
 			}
 
 			if (!intersected && startOffIntersect[i])
-            {
-				fragments[i].GetComponent<Transform>().localPosition = correctPos[i];
-				fragments[i].GetComponent<Transform>().localEulerAngles = correctRot[i];
-				print(i);
+			{
+				fragments[i].GetComponent<Transform>().localPosition = correctPos[i] + (solutionPos / scale);
+				fragments[i].GetComponent<Transform>().localEulerAngles = correctRot[i] + solutionRot;
+				fragments[i].GetComponent<Transform>().localScale = new Vector3(solutionScale, solutionScale, solutionScale);
+				isCompleted[i] = true;
 			}
+			if (!isCompleted[i]) allCompleted = false;
+		}
+		if (allCompleted)
+        {
+			print("allCompleted");
+			successEventChannel.RaiseEvent(minigameSO);
         }
-		
 	}
 
 	private List<Vector2> GeneratePoints(float radius, Vector2 sampleRegionSize, int numSamplesBeforeRejection)
@@ -183,35 +206,4 @@ public class FragmentPlacement : MonoBehaviour
 		}
 		return false;
 	}
-
-	public float SignedVolumeOfTriangle(Vector3 p1, Vector3 p2, Vector3 p3)
-	{
-		float v321 = p3.x * p2.y * p1.z;
-		float v231 = p2.x * p3.y * p1.z;
-		float v312 = p3.x * p1.y * p2.z;
-		float v132 = p1.x * p3.y * p2.z;
-		float v213 = p2.x * p1.y * p3.z;
-		float v123 = p1.x * p2.y * p3.z;
-
-		return (1.0f / 6.0f) * (-v321 + v231 + v312 - v132 - v213 + v123);
-	}
-
-	public float VolumeOfMesh(Mesh mesh)
-	{
-		float volume = 0;
-
-		Vector3[] vertices = mesh.vertices;
-		int[] triangles = mesh.triangles;
-
-		for (int i = 0; i < triangles.Length; i += 3)
-		{
-			Vector3 p1 = vertices[triangles[i + 0]];
-			Vector3 p2 = vertices[triangles[i + 1]];
-			Vector3 p3 = vertices[triangles[i + 2]];
-			volume += SignedVolumeOfTriangle(p1, p2, p3);
-		}
-		return Mathf.Abs(volume);
-	}
 }
-
-
