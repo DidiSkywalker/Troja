@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: 8c1c0c2df1704ff45a39a28ece1aaf1b
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/MiniGames/SpacebarMinigame/SpacebarMinigameScene.unity
     guid: ec7894d5bb4720240970ec5284b34a79
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: 8a43986d9fe0ebd42b58296d848c1209
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/MiniGames/BrushGame/BrushGameScene.unity
+    guid: a2b53ad4cf572e8448549bde0d69450a
   m_configObjects: {}

@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d160fc3075d144b88529984b578629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  successEventChannel: {fileID: 11400000, guid: 98f1035aec0ef9a4c887af4add30a26c, type: 2}
+  minigameSO: {fileID: 11400000, guid: fb7a773c766c0a844aa04d3395ced50c, type: 2}
   posOffset: {x: 2, y: -0.5, z: 15.4}
   sandPlaneColliderOffset: -0.4
   parentObject: {fileID: 478587232}
@@ -257,7 +259,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 2147483647
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 0d79a08d8eacf23479871a3284401739, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
