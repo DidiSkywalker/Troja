@@ -1,0 +1,63 @@
+﻿{
+  "questions": [
+    {
+      "text": "Welcher von den folgenden Namen ist eine andere altgriechische Bezeichnung der antiken Stadt Troia?",
+      "answers": [
+        {
+          "text": "Truva",
+          "isCorrect": false
+        },
+        {
+          "text": "Ilios",
+          "isCorrect": true
+        },
+        {
+          "text": "Hisarlık",
+          "isCorrect": false
+        },
+        {
+          "text": "Ilion",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "text": "Wie heißt das berühmte Werk, in welchem Homer von der Geschichte Troias erzählt?",
+      "answers": [
+        {
+          "text": "Ilias",
+          "isCorrect": true
+        },
+        {
+          "text": "Der Kampf um Troia",
+          "isCorrect": false
+        },
+        {
+          "text": "Odyssee",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Wer hat, inspiriert durch Homers Geschichte, mit Erfolg den Versuch gewagt, die Stadt Troia zu finden?",
+      "answers": [
+        {
+          "text": "Frank Calvert",
+          "isCorrect": false
+        },
+        {
+          "text": "William Blegen",
+          "isCorrect": false
+        },
+        {
+          "text": "Heinrich Schliemann",
+          "isCorrect": true
+        },
+        {
+          "text": "Wilhelm Dörpfeld",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

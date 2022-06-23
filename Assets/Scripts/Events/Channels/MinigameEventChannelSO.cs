@@ -24,12 +24,12 @@ namespace Events.Channels
             OnEventRaised?.Invoke(minigame);
         }
 
-        public void RaiseEvent(MinigameSO minigame, object minigameParams)
+        public void RaiseEvent(MinigameSO minigame, MinigameParams minigameParams)
         {
             if (OnEventRaised != null)
             {
-                OnEventRaised.Invoke(minigame);
                 MinigameState.Instance.MinigameParams = minigameParams;
+                OnEventRaised.Invoke(minigame);
             }
         }
     }

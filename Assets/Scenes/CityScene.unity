@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000004, guid: 750e29cebd13ce6418faae9f51d55f86, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: c22ba3582eba2644c8d98404d2d3efe6, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -405,6 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
+  minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &304577833
@@ -712,6 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
+  minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &705507993
@@ -919,6 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
+  minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &963194225
@@ -1213,6 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigame: {fileID: 11400000, guid: ec3cdc69a8c9c394cb7dfb5045e6b5d3, type: 2}
+  minigameParams: {fileID: 11400000, guid: fc8bb794365fa9b44bb0b277d812d85a, type: 2}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &1378486505
@@ -1326,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigame: {fileID: 11400000, guid: df7acc36f7d960e42a8332ef0250a831, type: 2}
+  minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &1541849111
@@ -1764,5 +1769,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
+  minigameParams: {fileID: 11400000, guid: d6f3ba7396f29cb46af320baf597242b, type: 2}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}

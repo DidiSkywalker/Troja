@@ -10,6 +10,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public MinigameSO minigame;
+    public MinigameParams minigameParams;
     public MinigameEventChannelSO launchMinigameEventChannelSo;
     public Texture2D pointerCursor;
 
@@ -23,7 +24,7 @@ public class Building : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && launchMinigameEventChannelSo != null)
         {
             print($"Building attempts to launch Minigame {minigame.minigameName}");
-            launchMinigameEventChannelSo.RaiseEvent(minigame);
+            launchMinigameEventChannelSo.RaiseEvent(minigame, minigameParams);
         }
     }
 

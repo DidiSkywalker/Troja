@@ -1,152 +1,170 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Events.Channels;
+using Minigames;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MiniGames.SlidingBlocksMinigame
 {
     public class SlidingBlocksMinigame : MonoBehaviour
     {
-        public Camera camera;
+        public new Camera camera;
         public Texture2D image;
         public int blocksPerLine = 4;
-        public int shuffleLength = 20;
+        public int shuffleLength = 2;
         public float defaultMoveDuration = .2f;
         public float shuffleMoveDuration = .1f;
+        public MinigameSO minigameSO;
+        public MinigameEventChannelSO minigameSuccessChannel;
+        public TextMeshPro successText;
 
-        enum PuzzleState { Solved, Shuffling, InPlay };
-        PuzzleState state;
+        private enum PuzzleState { Solved, Shuffling, InPlay };
+        private PuzzleState _state;
+        private long _solvedAt = -1;
+        private const long AfterSolvedDelay = 3;
 
-        Block emptyBlock;
-        Block[,] blocks;
-        Queue<Block> inputs;
-        bool blockIsMoving;
-        int shuffleMovesRemaining;
-        Vector2Int prevShuffleOffset;
+        private Block _emptyBlock;
+        private Block[,] _blocks;
+        private Queue<Block> _inputs;
+        private bool _blockIsMoving;
+        private int _shuffleMovesRemaining;
+        private Vector2Int _prevShuffleOffset;
 
-        void Start()
+        private void Start()
         {
+            var parms = MinigameState.Instance.GetParams<SlidingBlocksMinigameParams>();
+            if (parms != null)
+            {
+                blocksPerLine = parms.blocksPerRow;
+                shuffleLength = parms.shuffleMoves;
+                image = parms.image;
+            }
             CreatePuzzle();
+            StartShuffle();
         }
 
-        void Update()
+        private void Update()
         {
-            if (state == PuzzleState.Solved && Input.GetKeyDown(KeyCode.Space))
+            var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+            if (_solvedAt > 0 && _solvedAt + AfterSolvedDelay < now)
             {
-                StartShuffle();
+                minigameSuccessChannel.RaiseEvent(minigameSO);
+                _solvedAt = -1;
             }
         }
 
-        void CreatePuzzle()
+        private void CreatePuzzle()
         {
-            blocks = new Block[blocksPerLine, blocksPerLine];
-            Texture2D[,] imageSlices = ImageSlicer.GetSlices(image, blocksPerLine);
-            for (int y = 0; y < blocksPerLine; y++)
+            _blocks = new Block[blocksPerLine, blocksPerLine];
+            var imageSlices = ImageSlicer.GetSlices(image, blocksPerLine);
+            for (var y = 0; y < blocksPerLine; y++)
             {
-                for (int x = 0; x < blocksPerLine; x++)
+                for (var x = 0; x < blocksPerLine; x++)
                 {
-                    GameObject blockObject = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                    var blockObject = GameObject.CreatePrimitive(PrimitiveType.Quad);
                     blockObject.transform.position = -Vector2.one * (blocksPerLine - 1) * .5f + new Vector2(x, y);
                     blockObject.transform.parent = transform;
                     blockObject.layer = 6;
 
-                    Block block = blockObject.AddComponent<Block>();
+                    var block = blockObject.AddComponent<Block>();
                     block.OnBlockPressed += PlayerMoveBlockInput;
                     block.OnFinishedMoving += OnBlockFinishedMoving;
                     block.Init(new Vector2Int(x, y), imageSlices[x, y]);
-                    blocks[x, y] = block;
+                    _blocks[x, y] = block;
 
                     if (y == 0 && x == blocksPerLine - 1)
                     {
-                        emptyBlock = block;
+                        _emptyBlock = block;
                     }
                 }
             }
 
             camera.orthographicSize = blocksPerLine * .55f;
-            inputs = new Queue<Block>();
+            _inputs = new Queue<Block>();
         }
 
-        void PlayerMoveBlockInput(Block blockToMove)
+        private void PlayerMoveBlockInput(Block blockToMove)
         {
-            if (state == PuzzleState.InPlay)
+            if (_state != PuzzleState.InPlay) return;
+            _inputs.Enqueue(blockToMove);
+            MakeNextPlayerMove();
+        }
+
+        private void MakeNextPlayerMove()
+        {
+            while (_inputs.Count > 0 && !_blockIsMoving)
             {
-                inputs.Enqueue(blockToMove);
-                MakeNextPlayerMove();
+                MoveBlock(_inputs.Dequeue(), defaultMoveDuration);
             }
         }
 
-        void MakeNextPlayerMove()
+        private void MoveBlock(Block blockToMove, float duration)
         {
-            while (inputs.Count > 0 && !blockIsMoving)
+            if ((blockToMove.coord - _emptyBlock.coord).sqrMagnitude == 1)
             {
-                MoveBlock(inputs.Dequeue(), defaultMoveDuration);
-            }
-        }
+                _blocks[blockToMove.coord.x, blockToMove.coord.y] = _emptyBlock;
+                _blocks[_emptyBlock.coord.x, _emptyBlock.coord.y] = blockToMove;
 
-        void MoveBlock(Block blockToMove, float duration)
-        {
-            if ((blockToMove.coord - emptyBlock.coord).sqrMagnitude == 1)
-            {
-                blocks[blockToMove.coord.x, blockToMove.coord.y] = emptyBlock;
-                blocks[emptyBlock.coord.x, emptyBlock.coord.y] = blockToMove;
+                (_emptyBlock.coord, blockToMove.coord) = (blockToMove.coord, _emptyBlock.coord);
 
-                Vector2Int targetCoord = emptyBlock.coord;
-                emptyBlock.coord = blockToMove.coord;
-                blockToMove.coord = targetCoord;
-
-                Vector2 targetPosition = emptyBlock.transform.position;
-                emptyBlock.transform.position = blockToMove.transform.position;
+                var transform1 = _emptyBlock.transform;
+                Vector2 targetPosition = transform1.position;
+                transform1.position = blockToMove.transform.position;
                 blockToMove.MoveToPosition(targetPosition, duration);
-                blockIsMoving = true;
+                _blockIsMoving = true;
             }
         }
 
-        void OnBlockFinishedMoving()
+        private void OnBlockFinishedMoving()
         {
-            blockIsMoving = false;
+            _blockIsMoving = false;
             CheckIfSolved();
 
-            if (state == PuzzleState.InPlay)
+            if (_state == PuzzleState.InPlay)
             {
                 MakeNextPlayerMove();
             }
-            else if (state == PuzzleState.Shuffling)
+            else if (_state == PuzzleState.Shuffling)
             {
-                if (shuffleMovesRemaining > 0)
+                if (_shuffleMovesRemaining > 0)
                 {
                     MakeNextShuffleMove();
                 }
                 else
                 {
-                    state = PuzzleState.InPlay;
+                    _state = PuzzleState.InPlay;
                 }
             }
         }
 
-        void StartShuffle()
+        private void StartShuffle()
         {
-            state = PuzzleState.Shuffling;
-            shuffleMovesRemaining = shuffleLength;
-            emptyBlock.gameObject.SetActive(false);
+            _state = PuzzleState.Shuffling;
+            _shuffleMovesRemaining = shuffleLength;
+            _emptyBlock.gameObject.SetActive(false);
             MakeNextShuffleMove();
         }
 
-        void MakeNextShuffleMove()
+        private void MakeNextShuffleMove()
         {
             Vector2Int[] offsets = { new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1) };
-            int randomIndex = Random.Range(0, offsets.Length);
+            var randomIndex = Random.Range(0, offsets.Length);
 
             for (int i = 0; i < offsets.Length; i++)
             {
                 Vector2Int offset = offsets[(randomIndex + i) % offsets.Length];
-                if (offset != prevShuffleOffset * -1)
+                if (offset != _prevShuffleOffset * -1)
                 {
-                    Vector2Int moveBlockCoord = emptyBlock.coord + offset;
+                    Vector2Int moveBlockCoord = _emptyBlock.coord + offset;
 
                     if (moveBlockCoord.x >= 0 && moveBlockCoord.x < blocksPerLine && moveBlockCoord.y >= 0 && moveBlockCoord.y < blocksPerLine)
                     {
-                        MoveBlock(blocks[moveBlockCoord.x, moveBlockCoord.y], shuffleMoveDuration);
-                        shuffleMovesRemaining--;
-                        prevShuffleOffset = offset;
+                        MoveBlock(_blocks[moveBlockCoord.x, moveBlockCoord.y], shuffleMoveDuration);
+                        _shuffleMovesRemaining--;
+                        _prevShuffleOffset = offset;
                         break;
                     }
                 }
@@ -154,18 +172,17 @@ namespace MiniGames.SlidingBlocksMinigame
       
         }
 
-        void CheckIfSolved()
+        private void CheckIfSolved()
         {
-            foreach (Block block in blocks)
+            if (_blocks.Cast<Block>().Any(block => !block.IsAtStartingCoord()))
             {
-                if (!block.IsAtStartingCoord())
-                {
-                    return;
-                }
+                return;
             }
 
-            state = PuzzleState.Solved;
-            emptyBlock.gameObject.SetActive(true);
+            _state = PuzzleState.Solved;
+            _emptyBlock.gameObject.SetActive(true);
+            successText.gameObject.SetActive(true);
+            _solvedAt = DateTimeOffset.Now.ToUnixTimeSeconds();
         }
     }
 }

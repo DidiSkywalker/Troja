@@ -1,3 +1,4 @@
+using System;
 using Events.Channels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,11 @@ namespace Minigames
 
         public VoidEventChannelSO minigameSceneUnloadedEventChannel;
 
+        private void Start()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
         /// <summary>
         /// Additively load the scene of the given minigame into the game.
         /// </summary>
@@ -23,6 +29,7 @@ namespace Minigames
         public void LoadMinigameScene(MinigameSO minigame)
         {
             CityScreenshotHelper.SaveTexture();
+            SceneManager.UnloadSceneAsync("CityScene");
             SceneManager.LoadSceneAsync(minigame.minigameScene.ScenePath, LoadSceneMode.Additive);
         }
 
@@ -34,8 +41,19 @@ namespace Minigames
         /// </summary>
         public void UnloadMinigameScene()
         {
-            SceneManager.UnloadSceneAsync(MinigameState.Instance.ActiveMinigame.minigameScene.ScenePath);
-            minigameSceneUnloadedEventChannel.RaiseEvent();
+            SceneManager.LoadSceneAsync("CityScene", LoadSceneMode.Additive);
+            // SceneManager.UnloadSceneAsync(MinigameState.Instance.ActiveMinigame.minigameScene.ScenePath);
+            // minigameSceneUnloadedEventChannel.RaiseEvent();
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name.Equals("CityScene"))
+            {
+                SceneManager.SetActiveScene(scene);
+                SceneManager.UnloadSceneAsync(MinigameState.Instance.ActiveMinigame.minigameScene.ScenePath);
+                minigameSceneUnloadedEventChannel.RaiseEvent();
+            }
         }
     }
 }

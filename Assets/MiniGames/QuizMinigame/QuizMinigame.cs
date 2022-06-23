@@ -14,6 +14,7 @@ namespace MiniGames.QuizMinigame
         public MinigameEventChannelSO minigameEventChannelSO;
         
         private Quiz _quiz;
+        private QuizMinigameParams _parms;
 
         private Label _titleLabel;
         private Label _questionLabel;
@@ -25,6 +26,11 @@ namespace MiniGames.QuizMinigame
 
         private void Start()
         {
+            _parms = MinigameState.Instance.GetParams<QuizMinigameParams>();
+            if (_parms.quizFiles != null)
+            {
+                quizData = _parms.quizFiles;
+            }
             _quiz = Quiz.ParseFromMultipleJsonSources(quizData.Select(textAsset => textAsset.text));
             InitUI();
             DisplayQuestion();

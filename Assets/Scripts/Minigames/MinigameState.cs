@@ -10,7 +10,17 @@
         }
 
         public MinigameSO ActiveMinigame;
-        public object MinigameParams;
+        public MinigameParams MinigameParams;
         private MinigameState() {}
+
+        public T GetParams<T>() where T : MinigameParams
+        {
+            if (MinigameParams is T @params)
+            {
+                return @params;
+            }
+
+            return null;
+        }
     }
 }
