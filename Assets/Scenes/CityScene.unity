@@ -407,6 +407,8 @@ MonoBehaviour:
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
   minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
+  clippyMovementEventChannelSO: {fileID: 0}
+  clippySayEventChannelSO: {fileID: 0}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &304577833
 GameObject:
@@ -715,6 +717,8 @@ MonoBehaviour:
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
   minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
+  clippyMovementEventChannelSO: {fileID: 0}
+  clippySayEventChannelSO: {fileID: 0}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -923,6 +927,8 @@ MonoBehaviour:
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
   minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
+  clippyMovementEventChannelSO: {fileID: 0}
+  clippySayEventChannelSO: {fileID: 0}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -1218,6 +1224,8 @@ MonoBehaviour:
   minigame: {fileID: 11400000, guid: ec3cdc69a8c9c394cb7dfb5045e6b5d3, type: 2}
   minigameParams: {fileID: 11400000, guid: fc8bb794365fa9b44bb0b277d812d85a, type: 2}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
+  clippyMovementEventChannelSO: {fileID: 11400000, guid: 08aaaecbd645104478f3a279570e2e28, type: 2}
+  clippySayEventChannelSO: {fileID: 0}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &1378486505
 GameObject:
@@ -1332,6 +1340,8 @@ MonoBehaviour:
   minigame: {fileID: 11400000, guid: df7acc36f7d960e42a8332ef0250a831, type: 2}
   minigameParams: {fileID: 0}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
+  clippyMovementEventChannelSO: {fileID: 0}
+  clippySayEventChannelSO: {fileID: 0}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}
 --- !u!1 &1541849111
 GameObject:
@@ -1771,4 +1781,6 @@ MonoBehaviour:
   minigame: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
   minigameParams: {fileID: 11400000, guid: d6f3ba7396f29cb46af320baf597242b, type: 2}
   launchMinigameEventChannelSo: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
+  clippyMovementEventChannelSO: {fileID: 0}
+  clippySayEventChannelSO: {fileID: 0}
   pointerCursor: {fileID: 2800000, guid: c4630b57b0a0b4d469f9031769de71a4, type: 3}

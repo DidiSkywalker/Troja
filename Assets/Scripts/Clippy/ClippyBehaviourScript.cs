@@ -48,6 +48,7 @@ public class ClippyBehaviourScript : MonoBehaviour
 
         recalcClippySize();
         moveClippyRelative(position);
+
     }
 
     void Update()
