@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948dd73dc4f1d964d93523f33aab8394, type: 3}
+  m_Name: Artifact 1
+  m_EditorClassIdentifier: Assembly-CSharp:Minigames:PageSO
+  pageText: "Doppelhenkliger Becher (sog. Depas Amphikypellon) mit konischem Unterteil
+    und schmaler zylindrischer, leicht konkav einziehender Gef\xE4\xDFewandung; kleine
+    unebene Standfl\xE4che"
+  artifactMesh: {fileID: 2099166323793087577, guid: 74dc6867eb72684468635cce7c35a96e, type: 3}
+  artifactTexture: {fileID: 2800000, guid: 11a8fab1974dc6f4e82b025f8433ea03, type: 3}

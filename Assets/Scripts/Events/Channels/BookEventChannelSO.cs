@@ -1,4 +1,4 @@
-using Minigames;
+using Page;
 using UnityEngine;
 using UnityEngine.Events;
 

@@ -1,5 +1,5 @@
 using Events.Channels;
-using Minigames;
+using Page;
 using UnityEngine;
 using UnityEngine.Events;
 

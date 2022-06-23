@@ -1,7 +1,7 @@
 ﻿using DevLocker.Utils;
 using UnityEngine;
 
-namespace Minigames
+namespace Page
 {
     /// <summary>
     /// Describes a page as an Asset.

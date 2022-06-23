@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948dd73dc4f1d964d93523f33aab8394, type: 3}
-  m_Name: Artifact1
+  m_Script: {fileID: 11500000, guid: 0945573b8d1ceab49b565a5e7767f542, type: 3}
+  m_Name: BookEventChannel SO
   m_EditorClassIdentifier: 
-  pageText: 
-  artifactMesh: {fileID: 0}
-  artifactTexture: {fileID: 0}

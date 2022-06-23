@@ -168,9 +168,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Doppelhenkliger Becher (sog. Depas Amphikypellon) mit konischem Unterteil
-    und schmaler zylindrischer, leicht konkav einziehender Gef\xE4\xDFwandung; kleine
-    unebene Standfl\xE4che"
+  m_text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -280,7 +279,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2166754862700769658}
-  m_Mesh: {fileID: 2099166323793087577, guid: 74dc6867eb72684468635cce7c35a96e, type: 3}
+  m_Mesh: {fileID: -818681175925057308, guid: 8593e75bd424c48438c854e713fba702, type: 3}
 --- !u!23 &8201090141198461536
 MeshRenderer:
   m_ObjectHideFlags: 0
