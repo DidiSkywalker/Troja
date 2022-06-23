@@ -1,3 +1,4 @@
+using Base;
 using Events.Channels;
 using Minigames;
 using UnityEngine;
@@ -13,14 +14,13 @@ public class Building : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (MinigameState.IsMinigameRunning())
+        if (State.IsMinigameRunning())
         {
             return;
         }
 
         if (Input.GetMouseButtonDown(0) && launchMinigameEventChannelSo != null)
         {
-            print($"Building attempts to launch Minigame {minigame.minigameName}");
             launchMinigameEventChannelSo.RaiseEvent(minigame, minigameParams);
         }
     }

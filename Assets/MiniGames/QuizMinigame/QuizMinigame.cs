@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Base;
 using Events.Channels;
 using Minigames;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace MiniGames.QuizMinigame
 
         private void Start()
         {
-            _parms = MinigameState.Instance.GetParams<QuizMinigameParams>();
+            _parms = State.Instance.GetParams<QuizMinigameParams>();
             if (_parms.quizFiles != null)
             {
                 quizData = _parms.quizFiles;

@@ -222,14 +222,14 @@ RectTransform:
   m_Children:
   - {fileID: 629059183}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &959992979
+--- !u!1 &890724023
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,24 +237,109 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 959992984}
-  - component: {fileID: 959992983}
-  - component: {fileID: 959992982}
-  - component: {fileID: 959992980}
+  - component: {fileID: 890724025}
+  - component: {fileID: 890724024}
+  - component: {fileID: 890724029}
+  - component: {fileID: 890724028}
+  - component: {fileID: 890724027}
+  - component: {fileID: 890724026}
   m_Layer: 0
-  m_Name: MinigameStateManager
+  m_Name: StateManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &959992980
+--- !u!114 &890724024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959992979}
+  m_GameObject: {fileID: 890724023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be60fa77480d414696b795359f40bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &890724025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890724023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &890724026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890724023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9b00d5bd9c4360aa6639ecaf35c136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: 95d26a03d1d29a84a893f4383380353c, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 890724024}
+        m_TargetAssemblyTypeName: Base.StateManager, Assembly-CSharp
+        m_MethodName: SetActiveLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &890724027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890724023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44ee09a5056460d9650e024587d8d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: 50d9b35871a68b443be57f278a080ef6, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 890724024}
+        m_TargetAssemblyTypeName: Base.StateManager, Assembly-CSharp
+        m_MethodName: UnsetActiveLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &890724028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890724023}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44ee09a5056460d9650e024587d8d4f, type: 3}
@@ -264,8 +349,8 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 959992983}
-        m_TargetAssemblyTypeName: Minigames.MinigameStateManager, Assembly-CSharp
+      - m_Target: {fileID: 890724024}
+        m_TargetAssemblyTypeName: Base.StateManager, Assembly-CSharp
         m_MethodName: UnsetActiveMinigame
         m_Mode: 1
         m_Arguments:
@@ -276,13 +361,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &959992982
+--- !u!114 &890724029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959992979}
+  m_GameObject: {fileID: 890724023}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b770a84a24a943d4b8e758c5f17196d1, type: 3}
@@ -292,8 +377,8 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 959992983}
-        m_TargetAssemblyTypeName: Minigames.MinigameStateManager, Assembly-CSharp
+      - m_Target: {fileID: 890724024}
+        m_TargetAssemblyTypeName: Base.StateManager, Assembly-CSharp
         m_MethodName: SetActiveMinigame
         m_Mode: 0
         m_Arguments:
@@ -304,33 +389,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &959992983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959992979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79068ed7752f40fcb7e94d769d167509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &959992984
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959992979}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.455084, y: 4.1560726, z: -1.464251}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1044420859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 093c5ad58b4f1c342800e0940d481b0c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e261d4e7be4bc374bb4389ca2f8d9b33, type: 3}
---- !u!1 &1251665233
+--- !u!1 &1178252472
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -456,65 +514,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1251665234}
-  - component: {fileID: 1251665235}
-  - component: {fileID: 1251665237}
-  - component: {fileID: 1251665239}
-  - component: {fileID: 1251665238}
+  - component: {fileID: 1178252478}
+  - component: {fileID: 1178252477}
+  - component: {fileID: 1178252476}
+  - component: {fileID: 1178252475}
+  - component: {fileID: 1178252474}
+  - component: {fileID: 1178252473}
   m_Layer: 0
-  m_Name: MinigameSceneLoader
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1251665234
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251665233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1251665235
+--- !u!114 &1178252473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251665233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4dda0e0b9e765b43b6ebc3496331ee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minigameSceneUnloadedEventChannel: {fileID: 11400000, guid: ba1b8f4403154094b9ad6af0ec7ee165, type: 2}
---- !u!114 &1251665237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251665233}
+  m_GameObject: {fileID: 1178252472}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44ee09a5056460d9650e024587d8d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: 6c2a05d407c0dd048aacd4049843cb5f, type: 2}
+  channel: {fileID: 11400000, guid: 50d9b35871a68b443be57f278a080ef6, type: 2}
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1251665235}
-        m_TargetAssemblyTypeName: Minigames.MinigameSceneLoader, Assembly-CSharp
-        m_MethodName: UnloadMinigameScene
+      - m_Target: {fileID: 1178252477}
+        m_TargetAssemblyTypeName: Base.SceneLoader, Assembly-CSharp
+        m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -524,26 +555,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1251665238
+--- !u!114 &1178252474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251665233}
+  m_GameObject: {fileID: 1178252472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b770a84a24a943d4b8e758c5f17196d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f9b00d5bd9c4360aa6639ecaf35c136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: 98f1035aec0ef9a4c887af4add30a26c, type: 2}
+  channel: {fileID: 11400000, guid: 95d26a03d1d29a84a893f4383380353c, type: 2}
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1251665235}
-        m_TargetAssemblyTypeName: Minigames.MinigameSceneLoader, Assembly-CSharp
-        m_MethodName: UnloadMinigameScene
-        m_Mode: 1
+      - m_Target: {fileID: 1178252477}
+        m_TargetAssemblyTypeName: Base.SceneLoader, Assembly-CSharp
+        m_MethodName: LoadLevelScene
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -552,13 +583,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1251665239
+--- !u!114 &1178252475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251665233}
+  m_GameObject: {fileID: 1178252472}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b770a84a24a943d4b8e758c5f17196d1, type: 3}
@@ -568,8 +599,8 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1251665235}
-        m_TargetAssemblyTypeName: Minigames.MinigameSceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 1178252477}
+        m_TargetAssemblyTypeName: Base.SceneLoader, Assembly-CSharp
         m_MethodName: LoadMinigameScene
         m_Mode: 0
         m_Arguments:
@@ -580,80 +611,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &1654143621
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1654143623}
-  - component: {fileID: 1654143622}
-  - component: {fileID: 1654143625}
-  - component: {fileID: 1654143627}
-  - component: {fileID: 1654143626}
-  m_Layer: 0
-  m_Name: MinigameUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1654143622
+--- !u!114 &1178252476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654143621}
+  m_GameObject: {fileID: 1178252472}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 8e3e86ec8d7c53544b575c3ffdd856b8, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: a7f3efac9e9e2284aaa94ab0096238ed, type: 3}
-  m_SortingOrder: 0
---- !u!4 &1654143623
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654143621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1654143625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654143621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221595468e1e48cb99be6f4b7552baf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiDocument: {fileID: 1654143622}
-  visibleByDefault: 0
-  minigameUIExitEventChannel: {fileID: 11400000, guid: 6c2a05d407c0dd048aacd4049843cb5f, type: 2}
---- !u!114 &1654143626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654143621}
-  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b770a84a24a943d4b8e758c5f17196d1, type: 3}
   m_Name: 
@@ -662,10 +627,10 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1654143625}
-        m_TargetAssemblyTypeName: Minigames.MinigameUIController, Assembly-CSharp
-        m_MethodName: SetInvisible
-        m_Mode: 1
+      - m_Target: {fileID: 1178252477}
+        m_TargetAssemblyTypeName: Base.SceneLoader, Assembly-CSharp
+        m_MethodName: UnloadMinigameScene
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -674,34 +639,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1654143627
+--- !u!114 &1178252477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654143621}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1178252472}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b770a84a24a943d4b8e758c5f17196d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 84910c4eeade48439e73d18da648104e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: 37c61bebcb64e384386316eb230bb5b5, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1654143625}
-        m_TargetAssemblyTypeName: Minigames.MinigameUIController, Assembly-CSharp
-        m_MethodName: SetVisible
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  mainMenuScene:
+    m_SceneAsset: {fileID: 102900000, guid: fee7417591affc847ae1c5bd2fa18f77, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/MainMenuScene.unity
+  minigameSceneUnloadedEventChannel: {fileID: 11400000, guid: ba1b8f4403154094b9ad6af0ec7ee165, type: 2}
+--- !u!4 &1178252478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178252472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2109289454
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,5 +736,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Base;
 using Events.Channels;
 using Minigames;
 using TMPro;
@@ -35,7 +36,7 @@ namespace MiniGames.SlidingBlocksMinigame
 
         private void Start()
         {
-            var parms = MinigameState.Instance.GetParams<SlidingBlocksMinigameParams>();
+            var parms = State.Instance.GetParams<SlidingBlocksMinigameParams>();
             if (parms != null)
             {
                 blocksPerLine = parms.blocksPerRow;

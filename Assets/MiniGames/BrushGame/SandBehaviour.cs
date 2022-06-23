@@ -11,7 +11,7 @@ public class SandBehaviour : MonoBehaviour
     private Vector3[] newVertices;
     private Vector2[] newUV;
     private int[] newTriangles;
-    private Transform transform;
+    private new Transform transform;
     private int vertexCount;
     private int triangleCount;
 
