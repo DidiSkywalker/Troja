@@ -267,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 2166754862700769658}
   m_LocalRotation: {x: -0.290424, y: -0.19195876, z: -0.4597623, w: 0.8169604}
   m_LocalPosition: {x: 2.37, y: 2.58, z: 3.3109643}
-  m_LocalScale: {x: 47.622894, y: 47.622894, z: 47.622894}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 489577379964958412}
@@ -371,7 +371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8039213561771062439}
+  - {fileID: 703518702559391651}
   - {fileID: 5464726346890063791}
   - {fileID: 435914861232153283}
   - {fileID: 5221220998235845107}
@@ -631,9 +631,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8039213561771062439}
+  - component: {fileID: 703518702559391651}
   - component: {fileID: 4659129662284162551}
   - component: {fileID: 5019657231540472694}
+  - component: {fileID: 3385910507246244140}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -641,21 +642,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8039213561771062439
-Transform:
+--- !u!224 &703518702559391651
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5828725551761757320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.94461066, y: 0.035800934, z: 0.49625635}
+  m_LocalPosition: {x: 0, y: 0, z: 0.49625635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 489577379964958412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.94461066, y: 0.035800934}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &4659129662284162551
 Camera:
   m_ObjectHideFlags: 0
@@ -666,7 +672,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: 0.70980394, g: 0.654902, b: 0.5921569, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -707,6 +713,14 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5828725551761757320}
   m_Enabled: 1
+--- !u!222 &3385910507246244140
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828725551761757320}
+  m_CullTransparentMesh: 1
 --- !u!1 &6529182308088054376
 GameObject:
   m_ObjectHideFlags: 0
