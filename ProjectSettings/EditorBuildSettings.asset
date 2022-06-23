@@ -23,6 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MiniGames/SlidingBlocksMinigame/SlidingBlocks.unity
     guid: 3cf85023489225840acc2ca48ab779d1
-    path: 
-    guid: 8a43986d9fe0ebd42b58296d848c1209
   m_configObjects: {}
