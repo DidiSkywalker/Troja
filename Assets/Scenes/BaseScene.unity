@@ -1052,6 +1052,18 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1091,10 +1103,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4369850795257615556, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cec7d0edad604674992743e17d6167f5, type: 2}
     - target: {fileID: 919132149155446097, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
       propertyPath: m_Name
       value: Buch aufschlagen
       objectReference: {fileID: 0}
+    - target: {fileID: 7339139351738904299, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eeaed9a5a05b90a43a01100368fb1dc4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201db689b91b5a844aba35105cd278d5, type: 3}
 --- !u!1 &1209023280 stripped
