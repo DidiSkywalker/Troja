@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3ccb45eb3949acaa9a865f05641509, type: 3}
-  m_Name: Building6Params
+  m_Script: {fileID: 11500000, guid: 8fb13efb235345c5be8878ebd653ad06, type: 3}
+  m_Name: LidSlidingBlockParams
   m_EditorClassIdentifier: 
   id: 
-  houseId: 
-  quizFiles:
-  - {fileID: 4900000, guid: a4ba1c07a84ed0d469e7de106bd1467b, type: 3}
+  groupId: 0
+  image: {fileID: 2800000, guid: 25e36965008bd174fa15053c46dc2561, type: 3}
+  blocksPerRow: 3
+  shuffleMoves: 20

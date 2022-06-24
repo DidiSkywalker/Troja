@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Base;
+using Enums;
 using Events.Channels;
 using Minigames;
 using UnityEngine;
@@ -56,7 +57,7 @@ namespace MiniGames.QuizMinigame
             
             // display question and answers
             var question = _quiz.questions[_currentQuestion];
-            _titleLabel.text = $"Question {_currentQuestion+1}/{_quiz.questions.Count}";
+            _titleLabel.text = $"Frage {_currentQuestion+1}/{_quiz.questions.Count}";
             _questionLabel.text = question.text;
 
             foreach (var label in question.answers.Select(MakeAnswerLabel))
