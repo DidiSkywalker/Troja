@@ -1,0 +1,25 @@
+﻿{
+  "questions": [
+    {
+      "text": "Vier Meter tiefe archäologische Ablagerungen aus dem frühen und mittleren Troia I deuten auf eine lange Besiedlungszeit hin. Eine leicht nach innen geneigte Festungsmauer umschließt eine Siedlung, die einen Durchmesser von etwa neunzig Metern hatte. Davor existierte ein turmartiger Vorsprung, hinter dem das Südtor aus dieser Zeit lag. Vor diesem Turm stand mindestens eine Steinstele mit Reliefverzierung, die die obere Hälfte einer menschlichen Figur zeigt, die möglicherweise eine Waffe hält. Die Tradition solcher Stele scheint in Troia über Jahrhunderte weiterzuleben: gut 1000 Jahre später taucht eine solche Steinstele vor dem Südtor von Troia VI wieder auf.\n\nWelche Tradition steckte hinter diesen Steinstelen?",
+      "answers": [
+        {
+          "text": "Sie dienten als Grabmäler",
+          "isCorrect": false
+        },
+        {
+          "text": "Sie erfüllten die Funktion von Götzenbildern",
+          "isCorrect": true
+        },
+        {
+          "text": "Sie wurden als Grenzsteine eingesetzt",
+          "isCorrect": false
+        },
+        {
+          "text": "Sie dienten der Vergöttlichung des trojanischen Königs",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,27 +1,39 @@
-using Events.Channels;
-using Minigames;
+using System;
+using Base;
 using UnityEngine;
 
-/// <summary>
-/// Temporary script to attach to a building as a way to launch a minigame.
-/// </summary>
 public class Building : MonoBehaviour
 {
-    public MinigameSO minigame;
-    public MinigameParams minigameParams;
-    public MinigameEventChannelSO launchMinigameEventChannelSo;
+    public int buildingGroupId;
+    public Mesh ruinMesh;
+    public Mesh builtMesh;
+
+    private void Start()
+    {
+        if (CityState.Instance.IsBuildingGroupBuilt(buildingGroupId))
+        {
+            OnBuildingGroupBuilt(buildingGroupId);
+        }
+    }
 
     private void OnMouseOver()
     {
-        if (MinigameState.IsMinigameRunning())
+        if (State.IsMinigameRunning())
         {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && launchMinigameEventChannelSo != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            print($"Building attempts to launch Minigame {minigame.minigameName}");
-            launchMinigameEventChannelSo.RaiseEvent(minigame, minigameParams);
+            CityState.Instance.OnBuildingGroupClicked(buildingGroupId);
+        }
+    }
+
+    public void OnBuildingGroupBuilt(int groupId)
+    {
+        if (buildingGroupId == groupId)
+        {
+            GetComponent<MeshFilter>().mesh = builtMesh;
         }
     }
 }

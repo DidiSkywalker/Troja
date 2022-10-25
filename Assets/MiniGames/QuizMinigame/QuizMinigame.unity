@@ -173,6 +173,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 0ecff2b7e0cd4a42b060152c6e73f9d7, type: 3}
   minigameSO: {fileID: 11400000, guid: 526a4240ea72b52479a08e8b1c08defb, type: 2}
   minigameEventChannelSO: {fileID: 11400000, guid: 98f1035aec0ef9a4c887af4add30a26c, type: 2}
+  clippySayEventChannel: {fileID: 11400000, guid: 093c5ad58b4f1c342800e0940d481b0c, type: 2}
+  clippyMoveEventChannel: {fileID: 11400000, guid: 08aaaecbd645104478f3a279570e2e28, type: 2}
 --- !u!1 &111003324
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,76 @@
+﻿{
+  "questions": [
+    {
+      "text": "Schliemanns größter Erfolg mit seinen Ausgrabungen war der von ihm selbst benannte Goldfund 'Schatz des Priamos'. Er umfasst etwa an die 8000 Gegenstände. Er machte den Fund am 31. Mai 1873. In seinen Berichten schrieb er Folgendes: „Hinter der letztern [Mauer] legte ich in 8 bis 9 Meter Tiefe die vom Skaeischen Thor weiter gehende trojanische Ringmauer bloss und stiess beim Weitergraben auf dieser Mauer und unmittelbar neben dem Hause des Priamos auf einen grossen kupfernen Gegenstand höchst merkwürdiger Form, der um so mehr meine Aufmerksamkeit auf sich zog, als ich hinter demselben Gold zu bemerken glaubte. Auf dem kupfernen Gegenstand ruhte eine 1½ bis 1¾ Meter dicke steinfeste Schicht von rother Asche und calcinirten Trümmern, auf welcher die vorerwähnte 1 Meter 80 Centimeter dicke, 6 Meter hohe Festungsmauer lastete, die aus grossen Steinen und Erde bestand und aus der ersten Zeit nach der Zerstörung Trojas stammen muss. Um den Schatz der Habsucht meiner Arbeiter zu entziehen und ihn für die Wissenschaft zu retten, war die allergrösste Eile nöthig, und, obgleich es noch nicht Frühstückszeit war, so liess ich doch sogleich ‚païdos‘ […] ausrufen, und während meine Arbeiter assen und ausruhten, schnitt ich den Schatz mit einem grossen Messer heraus was nicht ohne die allergrösste Kraftanstrengung und die furchtbarste Lebensgefahr möglich war, denn die grosse Festungsmauer, welche ich zu untergraben hatte, drohte jeden Augenblick auf mich einzustürzen. Aber der Anblick so vieler Gegenstände, von denen jeder einzelne einen unermesslichen Werth für die Wissenschaft hat, machte mich tollkühn und ich dachte an keine Gefahr.    – Heinrich Schliemann: Trojanische Alterthümer\n\nWem, vermutete Schliemann, gehörte der Goldfund?",
+      "answers": [
+        {
+          "text": "Odysseus",
+          "isCorrect": false
+        },
+        {
+          "text": "Athene",
+          "isCorrect": false
+        },
+        {
+          "text": "Priamos",
+          "isCorrect": true
+        },
+        {
+          "text": "Laokoon",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Was passierte mit dem Gold von Troia nach seiner Ausgrabung?",
+      "answers": [
+        {
+          "text": "Es wurde in Griechenland zu Ehren der griechischen Götter ausgestellt ",
+          "isCorrect": false
+        },
+        {
+          "text": "Es blieb in der (heutigen) Türkei, wo es auch gefunden wurde",
+          "isCorrect": false
+        },
+        {
+          "text": "Schliemann schenkte es den Deutschen 'zu ewigem Besitze'",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "text": "Machte Schliemann den Fund gemeinsam mit seiner Frau Sophia?",
+      "answers": [
+        {
+          "text": "Ja",
+          "isCorrect": false
+        },
+        {
+          "text": "Nein",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "text": "Wo befindet sich der 'Schatz des Priamos' heute?",
+      "answers": [
+        {
+          "text": "Deutschland",
+          "isCorrect": false
+        },
+        {
+          "text": "Russland",
+          "isCorrect": true
+        },
+        {
+          "text": "Griechenland",
+          "isCorrect": false
+        },
+        {
+          "text": "Türkei",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

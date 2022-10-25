@@ -1,4 +1,5 @@
-﻿using Minigames;
+﻿using Base;
+using Minigames;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,7 +29,7 @@ namespace Events.Channels
         {
             if (OnEventRaised != null)
             {
-                MinigameState.Instance.MinigameParams = minigameParams;
+                State.Instance.MinigameParams = minigameParams;
                 OnEventRaised.Invoke(minigame);
             }
         }
